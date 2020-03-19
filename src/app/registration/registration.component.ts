@@ -82,6 +82,5 @@ export class RegistrationComponent implements OnInit {
   this.RowId = '';
 this.clearForm();
 this.isEdit=false;
-
   }
 }
