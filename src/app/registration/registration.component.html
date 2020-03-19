@@ -1,0 +1,78 @@
+<!-- <div class="d-flex justify-content-center mt-5"> -->
+    <p>&nbsp;</p>
+
+    <div class="container mt-2">
+    <div class=" row">
+        <div class="col-md-6">
+    <form [formGroup]="regForm">
+        <h3>Registration  Form</h3>
+        <br>
+
+        <div class="form-group">
+            <label>First Name *</label>
+            <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                <div *ngIf="f.firstName.errors.required">First Name is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Last Name *</label>
+            <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Mobile Number  *</label>
+            <input type="text"  mask="0*" maxlength="10" formControlName="mobile" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }" />
+            <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                <div *ngIf="f.mobile.errors.required">Mobile Number is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Email *</label>
+            <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Password *</label>
+            <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+                <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between">
+            <button type="button"  *ngIf="!isEdit" class="btn btn-primary" (click)="saveData()">Submit</button>
+            <button class="btn btn-info" *ngIf="isEdit" (click)="updateForm()">Update</button>
+            <button (click)="clearForm()"   class="btn btn-warning" >Reset</button>
+    
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+        <table class="table table-sm">
+            <tr class="table-active">
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Mobile Number</th>
+                <th>Email</th>
+            </tr>
+            <tr *ngFor="let d of result;index as i">
+                <td>{{d.firstName}}</td>
+                <td>{{d.lastName}}</td>
+                <td>{{d.mobile}}</td>
+                <td>{{d.email}}</td>
+                <button class="btn btn-info sm"  (click)="editForm(i)">edit</button>
+                <button class="btn btn-danger sm" (click)="deleteForm(i)">delete</button>
+            </tr>
+            
+        </table>
+    </div>
+    </div>
+</div>
+<!-- </div> -->
